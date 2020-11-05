@@ -1,3 +1,4 @@
+import 'package:filcnaplo/data/models/event.dart';
 import 'package:filcnaplo/data/models/school.dart';
 import 'package:filcnaplo/data/models/student.dart';
 import 'package:filcnaplo/data/models/evaluation.dart';
@@ -6,6 +7,11 @@ import 'package:filcnaplo/data/models/message.dart';
 import 'package:filcnaplo/data/models/note.dart';
 import 'package:filcnaplo/data/models/recipient.dart';
 import 'package:filcnaplo/data/models/type.dart';
+import 'package:filcnaplo/ui/pages/planner/timetable/day.dart';
+import 'package:filcnaplo/ui/pages/planner/timetable/week.dart';
+
+import 'exam.dart';
+import 'lesson.dart';
 
 class Dummy {
   static Student student = Student(
@@ -26,6 +32,21 @@ class Dummy {
       "Test Teacher",
       "Test",
       Type("", "", "evkozi_jegy_ertekeles"),
+      "",
+      Subject("0", null, "English"),
+      null,
+      Type("0", "Test", "Test"),
+      DateTime.now(),
+      DateTime.now(),
+      "Test",
+    ),
+    Evaluation(
+      "100101110010",
+      DateTime.now(),
+      EvaluationValue(5, "Ötös", "Ötös", 100),
+      "Teszttanár",
+      "EzAzEnJegyem",
+      Type("", "", "III_ne_jegy_ertekeles"),
       "",
       Subject("0", null, "English"),
       null,
@@ -103,7 +124,10 @@ class Dummy {
       "Test User",
       "This is another test message.",
       "Test 2",
-      [Recipient(0, '0', "Test Teacher", 0, null), Recipient(1, '1', "Albert", 1, null)],
+      [
+        Recipient(0, '0', "Test Teacher", 0, null),
+        Recipient(1, '1', "Albert", 1, null)
+      ],
       [],
     ),
   ];
@@ -122,11 +146,53 @@ class Dummy {
     ),
   ];
 
+  static List<Event> events = [
+    Event(
+      "2378123",
+      DateTime.now(),
+      DateTime.now(),
+      "Test Event",
+      "This is a test event.",
+    ),
+  ];
+
   static List<Recipient> recipients = [
     Recipient(0, "", "Test User 1", 0, null),
     Recipient(1, "", "Test User 2", 0, null),
     Recipient(2, "", "Test User 3", 0, null),
   ];
+
+  static List<Lesson> lessons = [
+    Lesson(
+      Type("122455", "", ""),
+      DateTime.now(),
+      Subject("1231651", null,
+          "Szolfézs"),
+      "3",
+      12,
+      "Jozsa Neni legjobb spanja",
+      "Jozsa Neni",
+      true,
+      DateTime.now(),
+      DateTime.now().add(Duration(minutes: 45)),
+      Type("51654537", "student presence type desc",
+          "student presence type name"),
+      null, 
+      <Exam>[],
+      "6153131",
+      Type("51561", "lesson type desc", "lesson type name"),
+      "Le van irva",
+      "Kisterem",
+      "9. C",
+      "Matekmatika - mi ez mi?",
+    ),
+  ];
+
+  static Week week = Week([
+    Day(
+      date: DateTime.now(),
+    )
+  ]);
 
   // k0sz boa
 }
