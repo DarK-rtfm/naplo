@@ -1,4 +1,5 @@
 import 'package:filcnaplo/data/context/app.dart';
+import 'package:filcnaplo/data/models/dummy.dart';
 import 'package:filcnaplo/data/models/lesson.dart';
 import 'package:filcnaplo/ui/pages/planner/timetable/day.dart';
 import 'package:filcnaplo/ui/pages/planner/timetable/tile.dart';
@@ -8,9 +9,15 @@ class TimetableBuilder {
   Week week = Week([]);
 
   void build(i) {
-    week = getWeek(i);
     List<Day> days = [];
-    List<Lesson> lessons = app.user.sync.timetable.data;
+    List<Lesson> lessons;
+    if (!app.debugUser) {
+      week = getWeek(i);
+      lessons = app.user.sync.timetable.data;
+    } else {
+      week = Dummy.week;
+      lessons = Dummy.lessons;
+    }
 
     lessons.sort((a, b) => a.start.compareTo(b.start));
 
@@ -20,7 +27,8 @@ class TimetableBuilder {
         days.add(Day(date: lesson.date, lessons: [], tiles: []));
       }
 
-      days.last.lessons.add(lesson);
+      if (!days.last.lessons.map((l) => l.id).contains(lesson.id))
+        days.last.lessons.add(lesson);
       if (lesson.subject != null) days.last.tiles.add(LessonTile(lesson));
     });
 
@@ -35,25 +43,25 @@ class TimetableBuilder {
     DateTime schoolStart;
     Week currentWeek = Week([]);
 
-    if (DateTime(now.year, DateTime.september).isAfter(now))
-      schoolStart = DateTime(now.year - 1, DateTime.september, 1);
+    if (DateTime.utc(now.year, DateTime.september).isAfter(now))
+      schoolStart = DateTime.utc(now.year - 1, DateTime.september, 1);
     else
-      schoolStart = DateTime(now.year, DateTime.september, 1);
+      schoolStart = DateTime.utc(now.year, DateTime.september, 1);
 
-    if (schoolStart.weekday == 6 || schoolStart.weekday == 7)
-      schoolStart = schoolStart.add(Duration(days: -schoolStart.weekday + 8));
+    if (schoolStart.weekday >= 6)
+      schoolStart = schoolStart.add(Duration(days: 8 - schoolStart.weekday));
 
     currentWeek.start = schoolStart
         .add(Duration(days: 7 * weekOfYear - (schoolStart.weekday - 1)));
-    if (currentWeek.start.isBefore(DateTime(now.year, DateTime.september, 1))) {
-      currentWeek.start = DateTime(now.year, DateTime.september, 1);
+    if (currentWeek.start.isBefore(DateTime.utc(now.year, DateTime.september, 1))) {
+      currentWeek.start = DateTime.utc(now.year, DateTime.september, 1);
     }
 
     currentWeek.end = schoolStart
-        .add(Duration(days: 7 * weekOfYear + (6 - schoolStart.weekday)));
-    if (DateTime(now.year, DateTime.september).isAfter(now)) {
-      if (currentWeek.end.isAfter(DateTime(now.year, DateTime.august, 31))) {
-        currentWeek.start = DateTime(now.year, 9, 1);
+        .add(Duration(days: 7 * weekOfYear + (7 - schoolStart.weekday)));
+    if (DateTime.utc(now.year, DateTime.september).isAfter(now)) {
+      if (currentWeek.end.isAfter(DateTime.utc(now.year, DateTime.august, 31))) {
+        currentWeek.start = DateTime.utc(now.year, 9, 1);
       }
     }
 
@@ -64,16 +72,15 @@ class TimetableBuilder {
     final now = DateTime.now();
     DateTime schoolStart;
 
-    if (DateTime(now.year, DateTime.september).isAfter(now))
-      schoolStart = DateTime(now.year - 1, DateTime.september, 1);
+    if (DateTime.utc(now.year, DateTime.september).isAfter(now))
+      schoolStart = DateTime.utc(now.year - 1, DateTime.september, 1);
     else
-      schoolStart = DateTime(now.year, DateTime.september, 1);
+      schoolStart = DateTime.utc(now.year, DateTime.september, 1);
 
-    if (schoolStart.weekday == 6 || schoolStart.weekday == 7)
-      schoolStart = schoolStart.add(Duration(days: -schoolStart.weekday + 8));
+    if (schoolStart.weekday >= 6)
+      schoolStart = schoolStart.add(Duration(days: 8 - schoolStart.weekday));
 
     return ((now.difference(schoolStart).inDays - (now.weekday - 1)) / 7)
-            .floor() +
-        1;
+            .floor() + 1 + (now.weekday >= 6 ? 1 : 0);
   }
 }
