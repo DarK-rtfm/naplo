@@ -335,7 +335,22 @@
     },
     "notifications": {
       "title": "Notifications",
-      "news": "Show Newsletter"
+      "news": "Show Newsletter",
+      "types": {
+        "": "Notifications by category",
+        "evaluations": "Evaluations",
+        "messages": "Messages",
+        "notes": "Notes",
+        "events": "Notice board",
+        "cancelled": "Cancelled lessons",
+        "substituted": "Substituted lessons",
+        "absence": "Absences",
+        "justified": "Absence justified",
+        "exams": "Exams",
+        "homeworks": "Homeworks",
+        "newsletter": "Newsletter",
+        "currentLesson": "Current lesson (persistent)"
+      }
     },
     "behavior": {
       "title": "Behavior",

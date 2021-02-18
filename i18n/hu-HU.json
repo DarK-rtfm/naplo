@@ -335,7 +335,22 @@
     },
     "notifications": {
       "title": "Értesítések",
-      "news": "Hírlevél mutatása"
+      "news": "Hírlevél mutatása",
+      "types": {
+        "": "Értesítések kategóriák szerint",
+        "evaluations": "Jegyek",
+        "messages": "Üzenetek",
+        "notes": "Feljegyzések",
+        "events": "Faliújság",
+        "cancelled": "Elmaradt tanóra",
+        "substituted": "Helyettesített tanóra",
+        "absence": "Hiányzás",
+        "justified": "Hiányzás igazolása",
+        "exams": "Bejelentett számonkérések",
+        "homeworks": "Házifeladatok",
+        "newsletter": "Filc Hírlevél",
+        "currentLesson": "Jelenlegi óra (állandó)"
+      }
     },
     "behavior": {
       "title": "Működés",

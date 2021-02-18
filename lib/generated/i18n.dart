@@ -546,6 +546,32 @@ class I18n implements WidgetsLocalizations {
   String get settingsNotificationsTitle => "Értesítések";
   /// "Hírlevél mutatása"
   String get settingsNotificationsNews => "Hírlevél mutatása";
+  /// "Értesítések kategóriák szerint"
+  String get settingsNotificationsTypes => "Értesítések kategóriák szerint";
+  /// "Jegyek"
+  String get settingsNotificationsTypesEvaluations => "Jegyek";
+  /// "Üzenetek"
+  String get settingsNotificationsTypesMessages => "Üzenetek";
+  /// "Feljegyzések"
+  String get settingsNotificationsTypesNotes => "Feljegyzések";
+  /// "Faliújság"
+  String get settingsNotificationsTypesEvents => "Faliújság";
+  /// "Elmaradt tanóra"
+  String get settingsNotificationsTypesCancelled => "Elmaradt tanóra";
+  /// "Helyettesített tanóra"
+  String get settingsNotificationsTypesSubstituted => "Helyettesített tanóra";
+  /// "Hiányzás"
+  String get settingsNotificationsTypesAbsence => "Hiányzás";
+  /// "Hiányzás igazolása"
+  String get settingsNotificationsTypesJustified => "Hiányzás igazolása";
+  /// "Bejelentett számonkérések"
+  String get settingsNotificationsTypesExams => "Bejelentett számonkérések";
+  /// "Házifeladatok"
+  String get settingsNotificationsTypesHomeworks => "Házifeladatok";
+  /// "Filc Hírlevél"
+  String get settingsNotificationsTypesNewsletter => "Filc Hírlevél";
+  /// "Jelenlegi óra (állandó)"
+  String get settingsNotificationsTypesCurrentLesson => "Jelenlegi óra (állandó)";
   /// "Működés"
   String get settingsBehaviorTitle => "Működés";
   /// "Tartalom renderelése HTML-ben"
@@ -1501,6 +1527,45 @@ class _I18n_en_US extends I18n {
   /// "Show Newsletter"
   @override
   String get settingsNotificationsNews => "Show Newsletter";
+  /// "Notifications by category"
+  @override
+  String get settingsNotificationsTypes => "Notifications by category";
+  /// "Evaluations"
+  @override
+  String get settingsNotificationsTypesEvaluations => "Evaluations";
+  /// "Messages"
+  @override
+  String get settingsNotificationsTypesMessages => "Messages";
+  /// "Notes"
+  @override
+  String get settingsNotificationsTypesNotes => "Notes";
+  /// "Notice board"
+  @override
+  String get settingsNotificationsTypesEvents => "Notice board";
+  /// "Cancelled lessons"
+  @override
+  String get settingsNotificationsTypesCancelled => "Cancelled lessons";
+  /// "Substituted lessons"
+  @override
+  String get settingsNotificationsTypesSubstituted => "Substituted lessons";
+  /// "Absences"
+  @override
+  String get settingsNotificationsTypesAbsence => "Absences";
+  /// "Absence justified"
+  @override
+  String get settingsNotificationsTypesJustified => "Absence justified";
+  /// "Exams"
+  @override
+  String get settingsNotificationsTypesExams => "Exams";
+  /// "Homeworks"
+  @override
+  String get settingsNotificationsTypesHomeworks => "Homeworks";
+  /// "Newsletter"
+  @override
+  String get settingsNotificationsTypesNewsletter => "Newsletter";
+  /// "Current lesson (persistent)"
+  @override
+  String get settingsNotificationsTypesCurrentLesson => "Current lesson (persistent)";
   /// "Behavior"
   @override
   String get settingsBehaviorTitle => "Behavior";

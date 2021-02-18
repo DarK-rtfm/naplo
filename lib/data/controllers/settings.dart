@@ -16,6 +16,28 @@ class SettingsController {
   Color _appColor;
   bool _isDark;
   int backgroundColor;
+
+  /// Read individual settings with BitmaskHelper.nthBit.
+  ///
+  /// Toggle individual settings with BitmaskHelper.toggleBit.
+  ///
+  /// ```-
+  /// [bit] [function]
+  /// 1     Evaluations
+  /// 2     Messages
+  /// 3     Notes
+  /// 4     Events
+  /// 5     Cancelled lessons
+  /// 6     Substituted lessons
+  /// 7     Absences
+  /// 8     Absences justified
+  /// 9     Exams
+  /// 10    Homeworks
+  /// 11-14 [reserved for future use]
+  /// 15    Newsletter
+  /// 16    Current lesson (persistent)
+  /// ```
+  int notificationMask;
   bool enableNotifications;
   bool renderHtml;
   int defaultPage;
@@ -82,6 +104,7 @@ class SettingsController {
     app.theme.evalColors[4] = colorFromHex(evalColorsI[0]["color5"]);
 
     enableNotifications = settings["notifications"] == 1;
+    notificationMask = settings["notificationMask"];
     enableNews = settings["news_show"] == 1;
     renderHtml = settings["render_html"] == 1;
 
